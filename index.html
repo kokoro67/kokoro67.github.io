@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Court Tariff Project</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1 id="site-title">Loading...</h1>
+        <p id="site-subtitle">Loading...</p>
+    </header>
+
+    <div class="main-content">
+        
+        <div id="error-box" style="display:none; background: #ffebee; border: 2px solid red; padding: 20px; color: red; text-align: center; margin-bottom: 20px;">
+            <strong>Error: Data not loaded.</strong><br>Check that "data.js" is in the same folder.
+        </div>
+
+        <p class="value-prop" id="intro-text">Loading...</p>
+
+        <div class="legal-challenge-box">
+            <h2 id="legal-title">Loading...</h2>
+            <div class="legal-question-text" id="legal-question">Loading...</div>
+            <p id="legal-explanation">Loading...</p>
+            
+            <hr class="divider">
+
+            <h3 id="posture-title" style="color:var(--mahogany);">Loading...</h3>
+            <p id="posture-text" style="font-style:italic; color:#555;">Loading...</p>
+
+            <hr class="divider">
+
+            <h3 id="source-title" style="color:var(--mahogany);">Loading...</h3>
+            <p id="source-intro" style="margin-bottom: 20px;">Loading...</p>
+            
+            <div class="sources-container" id="sources-container">
+                </div>
+        </div>
+
+        <div class="timeline-section">
+            <h2 style="text-align:center; color:var(--mahogany);">Tariff Timeline</h2>
+            <p style="text-align:center; color:#777; font-size:0.9rem; margin-bottom:30px;">(Click an event to reveal details)</p>
+            <div class="timeline-container" id="timeline-container"></div>
+        </div>
+
+        <div class="bench-container" id="bench"></div>
+
+        <div class="prediction-section">
+            <h2 id="pred-title">Loading...</h2>
+            <p id="pred-text" style="margin-bottom:20px;">Loading...</p>
+            <button id="sim-btn" onclick="toggleSimulation()">Click to Predict Outcome</button>
+            <div id="prediction-result" class="prediction-result hidden"></div>
+        </div>
+
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeModal()"></div>
+    <div class="opinion-panel" id="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+            <img id="modal-img" src="" alt="Justice">
+            <div>
+                <h2 id="modal-name">Justice Name</h2>
+                <span id="modal-badge" class="stance-badge">Stance</span>
+            </div>
+        </div>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+        <p id="modal-summary">Summary...</p>
+        <blockquote id="modal-quote">Quote...</blockquote>
+        <p id="modal-case" class="case-cite">Case...</p>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        if (typeof siteContent === 'undefined') {
+            document.getElementById('error-box').style.display = 'block';
+        } else {
+            
+            // 1. Text Mapping
+            const map = {
+                'site-title': siteContent.title,
+                'site-subtitle': siteContent.subtitle,
+                'intro-text': siteContent.introText,
+                'legal-title': siteContent.legalSectionTitle,
+                'legal-question': siteContent.legalQuestion,
+                'legal-explanation': siteContent.legalExplanation,
+                'posture-title': siteContent.postureTitle,
+                'posture-text': siteContent.postureText,
+                'source-title': siteContent.primarySourceTitle,
+                'source-intro': siteContent.primarySourceIntro,
+                'pred-title': siteContent.predictionTitle,
+                'pred-text': siteContent.predictionText
+            };
+
+            for (const [id, text] of Object.entries(map)) {
+                const el = document.getElementById(id);
+                if (el) el.innerText = text;
+            }
+
+            // 2. Render Sources (Dynamic with Commentary)
+            const sourcesContainer = document.getElementById('sources-container');
+            if (siteContent.primarySources) {
+                siteContent.primarySources.forEach(source => {
+                    const div = document.createElement('div');
+                    div.className = 'source-box';
+                    div.innerHTML = `
+                        <h4>${source.title}</h4>
+                        <p class="source-text">"${source.text}"</p>
+                        <p class="source-commentary"><strong>Analysis:</strong> ${source.commentary}</p>
+                    `;
+                    sourcesContainer.appendChild(div);
+                });
+            }
+
+            // 3. Render Timeline (Accordion)
+            const timelineContainer = document.getElementById('timeline-container');
+            if(timelineData) {
+                timelineData.forEach((item, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'timeline-item';
+                    div.onclick = function() { toggleTimeline(this); };
+                    
+                    div.innerHTML = `
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <div>
+                                    <span class="timeline-date">${item.date}</span>
+                                    <h4 class="timeline-title">${item.title}</h4>
+                                </div>
+                                <span class="timeline-icon">+</span>
+                            </div>
+                            <p style="margin-bottom:0; color:#555;">${item.summary}</p>
+                            
+                            <div class="timeline-body">
+                                <p>${item.details}</p>
+                            </div>
+                        </div>
+                    `;
+                    timelineContainer.appendChild(div);
+                });
+            }
+
+            window.toggleTimeline = function(element) {
+                element.classList.toggle("active");
+                const icon = element.querySelector(".timeline-icon");
+                if (element.classList.contains("active")) {
+                    icon.innerText = "−"; // Minus sign
+                } else {
+                    icon.innerText = "+"; // Plus sign
+                }
+            }
+
+            // 4. Render Bench
+            const benchContainer = document.getElementById('bench');
+            justicesData.forEach(justice => {
+                const card = document.createElement('div');
+                card.className = 'justice-card';
+                card.id = `card-${justice.id}`;
+                card.onclick = () => openModal(justice);
+                card.innerHTML = `
+                    <img src="${justice.image}" alt="${justice.name}" class="justice-img">
+                    <div class="justice-info">
+                        <div class="justice-name">${justice.name}</div>
+                        <div class="justice-role">${justice.role}</div>
+                        <div class="justice-mini-badge badge-${justice.type}">${justice.stance}</div>
+                    </div>
+                `;
+                benchContainer.appendChild(card);
+            });
+
+            // 5. Modal & Simulation
+            const modal = document.getElementById('modal');
+            const overlay = document.getElementById('overlay');
+            window.openModal = function(justice) {
+                document.getElementById('modal-name').innerText = justice.name;
+                document.getElementById('modal-img').src = justice.image;
+                document.getElementById('modal-summary').innerText = justice.summary;
+                document.getElementById('modal-quote').innerText = justice.quote;
+                document.getElementById('modal-case').innerText = "Relevant Case: " + justice.caseName;
+                const badge = document.getElementById('modal-badge');
+                badge.innerText = justice.stance;
+                badge.className = 'stance-badge stance-' + justice.type;
+                modal.style.display = 'block'; overlay.style.display = 'block';
+            }
+            window.closeModal = function() { modal.style.display = 'none'; overlay.style.display = 'none'; }
+
+            let simActive = false;
+            window.toggleSimulation = function() {
+                const btn = document.getElementById('sim-btn');
+                const resultBox = document.getElementById('prediction-result');
+                if (!simActive) {
+                    let yesVotes = 0, noVotes = 0;
+                    justicesData.forEach(justice => {
+                        const card = document.getElementById(`card-${justice.id}`);
+                        if (justice.votePrediction === 'yes') { card.classList.add('vote-yes'); yesVotes++; }
+                        else { card.classList.add('vote-no'); noVotes++; }
+                    });
+                    resultBox.innerHTML = `<h3>Predicted Outcome: ${yesVotes} - ${noVotes}</h3><p>Justices in <span style="color:#2ecc71; font-weight:bold;">Green</span> support President. <span style="color:#e74c3c; font-weight:bold;">Red</span> support Congress.</p>`;
+                    resultBox.classList.remove('hidden');
+                    btn.innerText = "Reset Simulation";
+                    simActive = true;
+                } else {
+                    document.querySelectorAll('.justice-card').forEach(c => c.classList.remove('vote-yes', 'vote-no'));
+                    resultBox.classList.add('hidden');
+                    btn.innerText = "Click to Predict Outcome";
+                    simActive = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
