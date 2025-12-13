@@ -93,7 +93,7 @@ const justicesData = [
     id: "gorsuch",
     name: "Neil Gorsuch",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Neil_Gorsuch_Official_Portrait.jpg/480px-Neil_Gorsuch_Official_Portrait.jpg",
+    image: "https://dims.apnews.com/dims4/default/076fdab/2147483647/strip/true/crop/3000x1885+0+0/resize/599x376!/quality/90/?url=https%3A%2F%2Fstorage.googleapis.com%2Fafs-prod%2Fmedia%2Fafs%3AMedium%3A799830007%2F3000.jpeg",
     stance: "Skeptical of Exec. Power",
     type: "strict", 
     votePrediction: "no",
