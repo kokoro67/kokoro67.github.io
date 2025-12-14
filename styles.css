@@ -88,6 +88,7 @@ h1 { margin: 0; font-size: 2.5rem; border-bottom: 2px solid var(--gold); display
 .badge-strict { color: #c62828; background: #ffebee; }
 .badge-defer { color: #2e7d32; background: #e8f5e9; }
 .badge-mixed { color: #ef6c00; background: #fff3e0; }
+.badge-uphold { color: white; background: var(--green-vote); font-weight: bold; }
 
 /* --- Prediction & Modal --- */
 .vote-yes { border-color: var(--green-vote) !important; box-shadow: 0 0 15px var(--green-vote); }

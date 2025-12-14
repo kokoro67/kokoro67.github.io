@@ -7,13 +7,13 @@ const siteContent = {
     // --- Header & Intro ---
     title: "A Tax by Any Other Name?",
     subtitle: "Predicting the Supreme Court’s Decision on IEEPA tariffs",
-    author: "Kokoro Terukina", // <--- NEW FIELD
+    author: "Kokoro Terukina",
     introText: "This memo demystifies the complex legal battle over trade authority. By examining the judicial philosophies of the nine Justices, it forecasts how a single Supreme Court decision could reshape the global economy. It also considers who the Justices are and how those perspectives inform their likely votes.",
 
     // --- Section: The Legal Problem ---
     legalSectionTitle: "The Question Before the Court",
     legalQuestion: "Did the President exceed statutory authority under the International Emergency Economic Powers Act (IEEPA) by imposing tariffs unrelated to an “unusual and extraordinary threat,” and does such a reading grant unconstitutional, open-ended power?",
-    legalExplanation: "The Constitution gives Congress the power to tax. However, the IEEPA allows the President to 'regulate' economic transactions during national emergencies. The legal battle hinges on whether the word 'regulate' includes the power to 'tax'.",
+    legalExplanation: "",
 
     // --- Section: Historical Context ---
     historicalContextTitle: "Historical Context",
@@ -25,17 +25,17 @@ const siteContent = {
 
     // --- Section: Primary Texts ---
     primarySourceTitle: "The Textual Conflict",
-    primarySourceIntro: "To understand the case, we must look at the specific wording of the laws involved.",
+    primarySourceIntro: "",
 
     primarySources: [
         {
             title: "U.S. Constitution (Art. I, § 8, cl. 1)",
-            text: "The Congress shall have Power To lay and collect Taxes, Duties, Imposts and Excises...",
+            text: "The Congress shall have Power To lay and collect Taxes, Duties, Imposts and Excises, to pay the debts and provide for the common defense and general welfare of the United States; but all duties, imposts and excises shall be uniform throughout the United States;",
             commentary: "The Constitution gives this power specifically to Congress, not the President. This is the core of the plaintiffs' argument."
         },
         {
-            title: "IEEPA (50 U.S.C. § 1701)",
-            text: "Any authority granted to the President... to deal with any unusual and extraordinary threat; which has its source in whole or substantial part outside the United States...",
+            title: "IEEPA (50 U.S.C. § 1701 (a) and (b))",
+            text: "(a) Any authority granted to the President by section 1702 of this title may be execerised to deal with any unusual and extraordinary threat, which has its source in whole or substantial part outside the United States, to the national security, foreign policy, or economy of the United States, if the President declares a national emergency with respect to such threat. (b) The authorities granted to the President by section 1702 of this title may only be exercised to deal with an unusual and extraordinary threat with respect to which a national emergency has been declared for purposes of this chapter and may not be exercised for any other purpose. Any exercise of such authorities to deal with any new threat shall be based on a new declaration of national emergency which must be with respect to such threat.",
             commentary: "The statute requires an 'unusual and extraordinary threat.' The debate is whether tariffs on general goods meet this high threshold."
         }
     ],
@@ -43,6 +43,7 @@ const siteContent = {
     // --- Section: International Relations ---
     implicationsTitle: "Implication on International Relations",
     implicationsText: "“The days of the United States propping up the entire world order, like Atlas, are over.” (2025 National Security Strategy, p. 12). The United States has served a pivotal role to uphold the moral mission to defend human rights, to defend free speech or free press. Yet our latest priority is to make America wealthy. The Trump administration has transformed the world order with changes to the old trade regime and alliances being destroyed. Relationships between countries are treated as strictly transactional and many allies have trade wars pushed on them.",
+
 
     // --- Section: Prediction ---
     predictionTitle: "Predicted Holding",
@@ -105,7 +106,8 @@ const justicesData = [
     id: "roberts",
     name: "John Roberts",
     role: "Chief Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Official_roberts_CJ.jpg/480px-Official_roberts_CJ.jpg",
+    // NOTE: This URL is an article page, not a direct image. It may not display correctly.
+    image: "https://static01.nyt.com/images/2007/08/01/washington/01roberts.190.jpg",
     stance: "NO - Strike Down",
     type: "strict",
     votePrediction: "no",
@@ -117,60 +119,60 @@ const justicesData = [
     id: "thomas",
     name: "Clarence Thomas",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Clarence_Thomas_official_SCOTUS_portrait.jpg/436px-Clarence_Thomas_official_SCOTUS_portrait.jpg",
-    stance: "NO - Strike Down",
-    type: "strict",
-    votePrediction: "no",
-    summary: "Justice Thomas is difficult to predict but is likely to vote to strike down the tariffs. Although he favors inherent presidential authority in foreign affairs, it is likely that he will view the IEEPA case strictly as a Legislative power rather than an issue involving foreign affairs.",
-    quote: "The Constitution categorically forbids Congress to delegate its legislative power... In Gundy v. United States Justice Thomas called to revive nondelegation.",
+    image: "https://pioneercourthouse.org/images/justices/EL-Thomas.jpg",
+    stance: "YES - Uphold",
+    type: "uphold",
+    votePrediction: "yes",
+    summary: "Justice Clarence Thomas is likely to vote to strike down the tariffs. Justice Thomas is known as a strong structural originalist and supports broad presidential power in foreign affairs but is generally skeptical of delegations and administrative power generally. He is known to be a formalist about Article I powers, which points against executive tariff authority but is deferential in foreign-affairs contexts. Historical statutory and textual analysis is likely to be the key factors that will shape his vote.",
+    quote: "",
     caseName: "Gundy v. United States"
   },
   {
     id: "alito",
     name: "Samuel Alito",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Samuel_Alito_official_photo.jpg/480px-Samuel_Alito_official_photo.jpg",
+    image: "https://www.rwu.edu/sites/default/files/styles/660x371/public/news-article/article-image/alito-slider.jpg",
     stance: "YES - Uphold",
-    type: "defer",
+    type: "uphold",
     votePrediction: "yes",
-    summary: "Justice Alito is the most likely to uphold the validity of the tariffs. He is greatly sympathetic to broad emergency delegations and understands the necessity for executive flexibility in crises. The government’s justification of using “emergency tools” is an argument he has accepted in the past.",
-    quote: "Justice Alito tends to leans towards and places great trust in the executive branch in crises and is rarely in the vote to limit presidential power.",
+    summary: "Justice Alito is the most likely to uphold the validity of the tariffs. Justice Alito is greatly sympathetic to broad emergency delegations and understands the necessity for executive flexibility in crises. The government’s justification of using “emergency tools” is an argument he has accepted in the past. He has a clear record of being deferential to the executive branch, specifically in national security and foreign affairs and is skeptical of limiting presidential power.",
+    quote: "",
     caseName: "Trump v. Hawaii"
   },
   {
     id: "sotomayor",
     name: "Sonia Sotomayor",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Sonia_Sotomayor_in_SCOTUS_robe.jpg/480px-Sonia_Sotomayor_in_SCOTUS_robe.jpg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_aQFdRjQ2xtoHSN-vZEEkvTRie8k31Gq16w&s",
     stance: "NO - Strike Down",
     type: "strict",
     votePrediction: "no",
-    summary: "Justice Sotomayor will certainly vote to strike down the validity of the tariffs. It is clear that she equates these tariffs that are enacted as revenue raising taxes. She consistently requires that there be clear statutory authorization to justify sweeping actions.",
-    quote: "Justice Sotomayor dissented in Trump v. Hawaii, warning against the danger of rubber-stamping national-security justifications.",
+    summary: "Justice Sotomayor will certainly vote to strike down the validity of the tariffs. It is clear that she equates these tariffs that are enacted as revenue raising taxes. Justice Sotomayor usually begins with text but heavily considers statutory history, the greater consequences of decisions, and also balances how an opinion may function in the real-world. She consistently requires that there be clear statutory authorization to justify sweeping actions and is a strong defender of stare desis.",
+    quote: "",
     caseName: "Trump v. Hawaii"
   },
   {
     id: "kavanaugh",
     name: "Brett Kavanaugh",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Brett_Kavanaugh_Official_Portrait.jpg/480px-Brett_Kavanaugh_Official_Portrait.jpg",
+    image: "https://platform.vox.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/13062027/1027859644.jpg.jpg?quality=90&strip=all&crop=0%2C0%2C100%2C100&w=2400",
     stance: "Possible Swing",
     type: "mixed",
     votePrediction: "yes", 
-    summary: "The prediction notes Kavanaugh as 'possibly' joining the majority to limit tariffs, but historically he defers on national security. He remains a key swing vote in this simulation.",
-    quote: "Courts generally lack the authority to second-guess the President’s national security determinations.",
+    summary: "Justice Kavanaugh is the true swing vote regarding this case but it is incredibly likely his vote will not have the power to sway the majority of justices. Justice Kavanaugh recognizes and sees the government’s argument but also sees the risks of ruling in favor of the executive that could lead to issues of the separation of power. Justice Kavanaugh’s role as the middle justice makes him a pivotal decider on whether the opinion will opt for a narrow textual justification or a structural argument.",
+    quote: "",
     caseName: "Trump v. Hawaii"
   },
   {
     id: "kagan",
     name: "Elena Kagan",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Elena_Kagan_Official_SCOTUS_Portrait_%282013%29.jpg/480px-Elena_Kagan_Official_SCOTUS_Portrait_%282013%29.jpg",
+    image: "https://static01.nyt.com/images/2014/02/12/us/12bar_cnd/12bar_cnd-articleLarge-v3.jpg?quality=75&auto=webp&disable=upscale",
     stance: "Limit Power",
     type: "strict",
     votePrediction: "no",
-    summary: "Identified as part of the coalition to limit executive action. Justice Kagan believes Congress can delegate power only if it provides clear instructions.",
-    quote: "Congress may delegate authority so long as it provides an intelligible principle...",
+    summary: "Justice Kagan is certain to vote to strike down the tariffs. Justice Kagan has a contrasting strategy compared to Justice Jackson who is very outspoken and not afraid to openly display her frustration or use her voice to speak to the public. Critics comment that Justice Kagan’s strategy of exercising restraint and limiting how she displays her frustration could be hurting the court and weakening democratic norms. Justice Kagan is known for her ability to speak to the center of the court and to “win by losing.”",
+    quote: "",
     caseName: "Gundy v. United States"
   },
   {
@@ -181,19 +183,19 @@ const justicesData = [
     stance: "Limit Power",
     type: "strict", 
     votePrediction: "no",
-    summary: "Identified as part of the coalition to limit executive action. Justice Gorsuch is the court's leading critic of the 'Administrative State.'",
-    quote: "The Constitution promises that only the people's elected representatives may adopt new federal laws restricting liberty...",
+    summary: "Justice Gorsuch is likely a strong vote to rule against the executive. He has a distinct pattern of being aggressively anti-delegation. He is also very skeptical of executive agencies and is a strong advocate of the separation of powers. He has warned against accretion of executive power by administrative reading and it is reasonable to say that he fears the ratcheting of increasing executive power in the future. If the IEEPA tariffs are considered a revenue raising tax, as Justice Sotomayor has labeled it, Justice Gorsuch will be strongly against delegating a taxing authority, which does not originate within the executive power, to the President.",
+    quote: "",
     caseName: "Gundy v. United States"
   },
   {
     id: "barrett",
     name: "Amy Coney Barrett",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Amy_Coney_Barrett_Official_Portrait.jpg/480px-Amy_Coney_Barrett_Official_Portrait.jpg",
-    stance: "Textualist",
+    image: "https://www.usatoday.com/gcdn/authoring/authoring-images/2025/09/04/USAT/85964916007-xxx-usat-1296301-45683.JPG?crop=3169,3168,x0,y0",
+    stance: "Limit Power",
     type: "strict",
     votePrediction: "no",
-    summary: "Identified as part of the coalition to limit executive action. Justice Barrett interprets laws by their plain text.",
+    summary: "Justice Barrett will likely vote against the executive. She has a record of being a textual or historical skeptic, making her a strong candidate conservative that will likely join to reject this use of IEEPA. Justice Barrett is a known textualist. She is cautious about broad delegations and is less instinctively deferential than her colleagues, Justice Alito or Justice Kavanaugh. Justice Barrett remains a critical vote to both the conservative and majority and believes strongly that the justices on the court should be able to rule without considering the repercussions by the public or by the sitting president.",
     quote: "N/A",
     caseName: "Biden v. Nebraska"
   },
@@ -201,11 +203,11 @@ const justicesData = [
     id: "jackson",
     name: "Ketanji Brown Jackson",
     role: "Associate Justice",
-    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/KBJackson.jpg/480px-KBJackson.jpg",
+    image: "https://media.wusa9.com/assets/WUSA/images/3105a13d-4a4d-4a05-9d7c-f040e61f7196/20250531T225008/3105a13d-4a4d-4a05-9d7c-f040e61f7196_1920x1080.jpg",
     stance: "Limit Power",
     type: "strict",
     votePrediction: "no",
-    summary: "Identified as part of the coalition to limit executive action. Justice Jackson tends to vote against executive overreach when it infringes on legislative duties.",
+    summary: "Justice Jackson will vote to strike down the tariffs. She has emphasized statutory history and asked about congressional intent to grant taxing-like authority which she suggests that she’ll vote to deny IEEPA as a tariff grant. Justice Jackson tends to favor clear-statement rules in separation-of-powers contexts. She favors a strong statutory text focus and is extremely skeptical of executive overreach where Congress has not clearly spoken.",
     quote: "N/A",
     caseName: "Loper Bright v. Raimondo"
   }
