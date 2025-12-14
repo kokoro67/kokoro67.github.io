@@ -123,7 +123,7 @@ const justicesData = [
     stance: "YES - Uphold",
     type: "uphold",
     votePrediction: "yes",
-    summary: "Justice Clarence Thomas is likely to vote to strike down the tariffs. Justice Thomas is known as a strong structural originalist and supports broad presidential power in foreign affairs but is generally skeptical of delegations and administrative power generally. He is known to be a formalist about Article I powers, which points against executive tariff authority but is deferential in foreign-affairs contexts. Historical statutory and textual analysis is likely to be the key factors that will shape his vote.",
+    summary: "Justice Clarence Thomas is likely to vote to uphold the tariffs. Justice Thomas is known as a strong structural originalist and supports broad presidential power in foreign affairs but is generally skeptical of delegations and administrative power generally. He isknown to be a formalist about Article I powers, which points against executive tariff authority but is deferential in foreign-affairs contexts. Historical statutory and textual analysis is likely to be the key factors that will shape his vote.",
     quote: "",
     caseName: "Hamdi v. Rumsfeld"
   },
