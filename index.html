@@ -11,6 +11,7 @@
     <header>
         <h1 id="site-title">Loading...</h1>
         <p id="site-subtitle">Loading...</p>
+        <p id="site-author" class="author-byline">Loading...</p>
     </header>
 
     <div class="main-content">
@@ -28,6 +29,11 @@
             
             <hr class="divider">
 
+            <h3 id="history-title" style="color:var(--mahogany);">Loading...</h3>
+            <p id="history-text" style="color:#333; margin-bottom:30px;">Loading...</p>
+
+            <hr class="divider">
+
             <h3 id="posture-title" style="color:var(--mahogany);">Loading...</h3>
             <p id="posture-text" style="font-style:italic; color:#555;">Loading...</p>
 
@@ -36,21 +42,25 @@
             <h3 id="source-title" style="color:var(--mahogany);">Loading...</h3>
             <p id="source-intro" style="margin-bottom: 20px;">Loading...</p>
             
-            <div class="sources-container" id="sources-container">
-                </div>
+            <div class="sources-container" id="sources-container"></div>
         </div>
 
         <div class="timeline-section">
-            <h2 style="text-align:center; color:var(--mahogany);">Tariff Timeline</h2>
+            <h2 style="text-align:center; color:var(--mahogany);">Projected Timeline (2025)</h2>
             <p style="text-align:center; color:#777; font-size:0.9rem; margin-bottom:30px;">(Click an event to reveal details)</p>
             <div class="timeline-container" id="timeline-container"></div>
+        </div>
+
+        <div class="legal-challenge-box" style="text-align: left; border-top: 5px solid #2C3E50;">
+            <h2 id="implications-title" style="text-align:center; color:#2C3E50;">Loading...</h2>
+            <p id="implications-text">Loading...</p>
         </div>
 
         <div class="bench-container" id="bench"></div>
 
         <div class="prediction-section">
             <h2 id="pred-title">Loading...</h2>
-            <p id="pred-text" style="margin-bottom:20px;">Loading...</p>
+            <p id="pred-text" style="margin-bottom:20px; font-weight: 500;">Loading...</p>
             <button id="sim-btn" onclick="toggleSimulation()">Click to Predict Outcome</button>
             <div id="prediction-result" class="prediction-result hidden"></div>
         </div>
@@ -83,14 +93,19 @@
             const map = {
                 'site-title': siteContent.title,
                 'site-subtitle': siteContent.subtitle,
+                'site-author': 'By ' + siteContent.author, // <--- MAP NEW AUTHOR FIELD
                 'intro-text': siteContent.introText,
                 'legal-title': siteContent.legalSectionTitle,
                 'legal-question': siteContent.legalQuestion,
                 'legal-explanation': siteContent.legalExplanation,
+                'history-title': siteContent.historicalContextTitle,
+                'history-text': siteContent.historicalContextText,
                 'posture-title': siteContent.postureTitle,
                 'posture-text': siteContent.postureText,
                 'source-title': siteContent.primarySourceTitle,
                 'source-intro': siteContent.primarySourceIntro,
+                'implications-title': siteContent.implicationsTitle,
+                'implications-text': siteContent.implicationsText,
                 'pred-title': siteContent.predictionTitle,
                 'pred-text': siteContent.predictionText
             };
@@ -100,7 +115,7 @@
                 if (el) el.innerText = text;
             }
 
-            // 2. Render Sources (Dynamic with Commentary)
+            // 2. Render Sources
             const sourcesContainer = document.getElementById('sources-container');
             if (siteContent.primarySources) {
                 siteContent.primarySources.forEach(source => {
@@ -115,7 +130,7 @@
                 });
             }
 
-            // 3. Render Timeline (Accordion)
+            // 3. Render Timeline
             const timelineContainer = document.getElementById('timeline-container');
             if(timelineData) {
                 timelineData.forEach((item, index) => {
@@ -148,9 +163,9 @@
                 element.classList.toggle("active");
                 const icon = element.querySelector(".timeline-icon");
                 if (element.classList.contains("active")) {
-                    icon.innerText = "−"; // Minus sign
+                    icon.innerText = "−"; 
                 } else {
-                    icon.innerText = "+"; // Plus sign
+                    icon.innerText = "+"; 
                 }
             }
 
