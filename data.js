@@ -111,9 +111,9 @@ const justicesData = [
     stance: "NO - Strike Down",
     type: "strict",
     votePrediction: "no",
-    summary: "Chief Justice Roberts is likely to vote to strike down or significantly limit the tariffs. Through his jurisprudence, he has carved a distinct path that exercises restraint but also lays firm limits on what he considers appropriate bureaucratic overreach.",
-    quote: "Chief Justice Roberts tends to author narrow opinions that can only be applied to the parties before the court... In West Virginia v. EPA, the Chief Justice agreed that actions require clear congressional authorization for sweeping actions.",
-    caseName: "West Virginia v. EPA"
+    summary: "Chief Justice Roberts is likely to vote to strike down or significantly limit the tariffs.  Through his jurisprudence, he has carved a distinct path that exercises restraint but also lays firm limits on what he considers appropriate bureaucratic overreach. Throughout the executive power opinions such as Selia Law and Trump v. United States, Chief Justice Roberts heavily relies not only on precedent but also emphasizes the structure of power outlined in briefs and some believe that his judicial moves are all about politics. Chief Justice Roberts tends to author narrow opinions that can only be applied to the parties before the court, making his rulings difficult to use as precedent. Although he is likely to vote to strike down the tariffs, it is likely that he will do so in a way that the opinion can be crafted in a narrow text-focused opinion.",
+    quote: "",
+    caseName: "NFIB v. OSHA"
   },
   {
     id: "thomas",
@@ -125,7 +125,7 @@ const justicesData = [
     votePrediction: "yes",
     summary: "Justice Clarence Thomas is likely to vote to strike down the tariffs. Justice Thomas is known as a strong structural originalist and supports broad presidential power in foreign affairs but is generally skeptical of delegations and administrative power generally. He is known to be a formalist about Article I powers, which points against executive tariff authority but is deferential in foreign-affairs contexts. Historical statutory and textual analysis is likely to be the key factors that will shape his vote.",
     quote: "",
-    caseName: "Gundy v. United States"
+    caseName: "Hamdi v. Rumsfeld"
   },
   {
     id: "alito",
@@ -196,7 +196,7 @@ const justicesData = [
     type: "strict",
     votePrediction: "no",
     summary: "Justice Barrett will likely vote against the executive. She has a record of being a textual or historical skeptic, making her a strong candidate conservative that will likely join to reject this use of IEEPA. Justice Barrett is a known textualist. She is cautious about broad delegations and is less instinctively deferential than her colleagues, Justice Alito or Justice Kavanaugh. Justice Barrett remains a critical vote to both the conservative and majority and believes strongly that the justices on the court should be able to rule without considering the repercussions by the public or by the sitting president.",
-    quote: "N/A",
+    quote: "",
     caseName: "Biden v. Nebraska"
   },
   {
@@ -208,7 +208,7 @@ const justicesData = [
     type: "strict",
     votePrediction: "no",
     summary: "Justice Jackson will vote to strike down the tariffs. She has emphasized statutory history and asked about congressional intent to grant taxing-like authority which she suggests that she’ll vote to deny IEEPA as a tariff grant. Justice Jackson tends to favor clear-statement rules in separation-of-powers contexts. She favors a strong statutory text focus and is extremely skeptical of executive overreach where Congress has not clearly spoken.",
-    quote: "N/A",
+    quote: "",
     caseName: "Loper Bright v. Raimondo"
   }
 ];
